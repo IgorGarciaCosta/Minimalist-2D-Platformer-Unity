@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private int extraJumps;
 
     public int extraJumpsValue;
+
+    public string nodeDaCena;
+
+    public GameObject Player;
     void Start()
     {
         extraJumps = extraJumpsValue;
@@ -39,6 +44,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
 
     void Update()
     {
@@ -60,5 +66,16 @@ public class PlayerController : MonoBehaviour
         Vector3 Scaler = transform.localScale;//get current object scale
         Scaler.x *=-1;//flip in x axis
         transform.localScale = Scaler;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject.tag == "Death"){
+            Player.transform.position = new Vector3(2, 0, 0);
+        }
+        if(collision.gameObject.tag == "Finish"){
+            SceneManager.LoadScene(nodeDaCena);
+        }
+        
     }
 }
