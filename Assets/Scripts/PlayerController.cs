@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public string nodeDaCena;
 
     public GameObject Player;
+
+    public AudioClip jumpSound;
     void Start()
     {
         extraJumps = extraJumpsValue;
@@ -54,9 +56,11 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.UpArrow)&&extraJumps>0){
             rb.velocity = Vector2.up*jumpForce;
             extraJumps--;
+            SoundManager.instance.PlaySingle(jumpSound);
         }
         else if(Input.GetKeyDown(KeyCode.UpArrow)&&extraJumps==0 && isGrounded){
             rb.velocity = Vector2.up*jumpForce;
+            SoundManager.instance.PlaySingle(jumpSound);
         }
     }
 
