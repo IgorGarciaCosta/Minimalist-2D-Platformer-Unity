@@ -27,8 +27,11 @@ public class PlayerController : MonoBehaviour
     public GameObject Player;
 
     public AudioClip jumpSound;
+    public AudioClip deathSound;
+    public AudioClip music;
     void Start()
     {
+        SoundManager.instance.PlaySingle(music);
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();//use player rigid body via script
     }
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.tag == "Death"){
+            SoundManager.instance.PlaySingle(deathSound);
             Player.transform.position = new Vector3(2, 0, 0);
         }
         if(collision.gameObject.tag == "Finish"){

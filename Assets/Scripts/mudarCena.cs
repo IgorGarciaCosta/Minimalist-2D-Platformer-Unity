@@ -7,8 +7,10 @@ public class mudarCena : MonoBehaviour
 {
 
     public string nomeDaCena;
+    //public AudioClip click;
     
     public void ChangeS(){
+        //SoundManager.instance.PlaySingle(click);
         SceneManager.LoadScene(nomeDaCena);
     }
 

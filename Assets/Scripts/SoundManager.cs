@@ -23,6 +23,10 @@ public class SoundManager : MonoBehaviour
        efxSound.clip = clip;
        efxSound.Play();
    }
+   public void PlayMusic(AudioClip clip){
+       efxSound.clip = clip;
+       efxSound.Play();
+   }
 
    
 }
